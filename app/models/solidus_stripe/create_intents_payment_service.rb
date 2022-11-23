@@ -13,7 +13,7 @@ module SolidusStripe
     def call
       invalidate_previous_payment_intents_payments
       if (payment = create_payment)
-        description = "Solidus Order ID: #{payment.gateway_order_identifier}"
+        description = payment.gateway_order_identifier
         stripe.update_intent(nil, intent_id, nil, description: description)
         true
       else
@@ -107,7 +107,7 @@ module SolidusStripe
     end
 
     def update_stripe_payment_description
-      description = "Solidus Order ID: #{payment.gateway_order_identifier}"
+      description = payment.gateway_order_identifier
       stripe.update_intent(nil, intent_id, nil, description: description)
     end
   end
