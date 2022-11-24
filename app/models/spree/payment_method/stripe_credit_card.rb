@@ -152,7 +152,7 @@ module Spree
 
       def options_for_purchase_or_auth(money, creditcard, transaction_options)
         options = {}
-        options[:description] = "Solidus Order ID: #{transaction_options[:order_id]}"
+        options[:description] = transaction_options[:order_id]
         options[:currency] = transaction_options[:currency]
         options[:off_session] = true if v3_intents?
         options[:statement_descriptor_suffix] = transaction_options[:statement_descriptor_suffix] if transaction_options[:statement_descriptor_suffix]

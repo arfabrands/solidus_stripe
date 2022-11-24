@@ -53,7 +53,7 @@ module SolidusStripe
       stripe.create_intent(
         (current_order.total * 100).to_i,
         params[:stripe_payment_method_id],
-        description: "Solidus Order ID: #{current_order.number} (pending)",
+        description: "#{current_order.number} (pending)",
         currency: current_order.currency,
         confirmation_method: 'automatic',
         capture_method: 'manual',
